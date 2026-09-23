@@ -32,14 +32,14 @@ For a direct command lookup, see [Quick Commands](#quick-commands) below.
 
 ## Quick Commands
 
-Run from the skill folder with `npx tsx scripts/<name>.ts <args>`. Pass `--json` for machine-parseable output.
+Run from the skill folder with `npx tsx scripts/<name>.ts <args>`[^rt]. Pass `--json` for machine-parseable output.
 
 | Task | Command |
 |------|---------|
-| Assemble a prompt | `npx tsx scripts/build-prompt.ts --goal "..." --layout "..." --content "..." --audience "..."` |
-| Validate a user prompt | `npx tsx scripts/validate-prompt.ts "..."` |
-| Pick the right export | `npx tsx scripts/pick-export.ts --recipient "..." --intent "..."` |
-| Triage a UI error | `npx tsx scripts/triage-error.ts "<symptom>"` |
+| Assemble a prompt | `npx tsx scripts/build-prompt.ts --goal "..." --layout "..." --content "..." --audience "..."`[^rt] |
+| Validate a user prompt | `npx tsx scripts/validate-prompt.ts "..."`[^rt] |
+| Pick the right export | `npx tsx scripts/pick-export.ts --recipient "..." --intent "..."`[^rt] |
+| Triage a UI error | `npx tsx scripts/triage-error.ts "<symptom>"`[^rt] |
 
 For the full script inventory and examples, see `scripts/README.md`.
 
@@ -300,8 +300,10 @@ For the full list with workarounds, see `known-issues.md`.
 | `triage-error.ts` | Match error symptom to documented workaround |
 | `chrome-snippets.ts` | JS snippets to inject via Chrome MCP `javascript_tool` |
 
-Run with `npx tsx scripts/<name>.ts <args>`. Pass `--json` for machine-parseable output. See `scripts/README.md` for examples.
+Run with `npx tsx scripts/<name>.ts <args>`[^rt]. Pass `--json` for machine-parseable output. See `scripts/README.md` for examples.
 
 ## Assets
 
 - `icon-small.svg`, `icon-large.png`, `icon-master.png` — skill icon assets.
+
+[^rt]: `npx tsx` accepts any standard runner — `bunx tsx`, `pnpm dlx tsx`, `deno run -A npm:tsx`, `node --import tsx`, or `yarn dlx tsx`. The first five auto-fetch `tsx` on demand; only `node --import tsx` requires `tsx` to be installed locally first (`npm i -D tsx`, or `npm i -g tsx` if you cannot reach the npm registry). Bun users can also skip `tsx` entirely and run TypeScript directly via `bun <script>`. Pick whichever your project ships. The canonical runtime decision table lives in the `skills-manager` skill under `Runtime Selection` (only available when working in the full `gg-skills` monorepo).
