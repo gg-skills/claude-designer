@@ -1,0 +1,1 @@
+Angular pieces lift out of a design canvas as a prototype takes shape.
